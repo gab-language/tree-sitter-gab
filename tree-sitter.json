@@ -7,9 +7,9 @@
       "path": ".",
       "file-types": ["gab"],
       "highlights": "queries/highlights.scm",
-      "scopes": "queries/scopes.cm",
-      "injections": "queries/injections.cm",
-      "locals": "queries/locals.cm",
+      "scopes": "queries/scopes.scm",
+      "injections": "queries/injections.scm",
+      "locals": "queries/locals.scm",
       "injection-regex": "gab"
     }
   ],
