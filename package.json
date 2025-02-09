@@ -22,18 +22,6 @@
     "tree-sitter-cli": "^0.20.6",
     "prebuildify": "^6.0.0"
   },
-  "tree-sitter": [
-    {
-      "scope": "source.gab",
-      "file-types": [
-        "gab"
-      ]
-    }
-  ],
-  "scripts": {
-    "install": "node-gyp-build",
-    "prebuildify": "prebuildify --napi --strip"
-  },
   "files": [
     "grammar.js",
     "binding.gyp",
@@ -41,5 +29,9 @@
     "bindings/node/*",
     "queries/*",
     "src/**"
-  ]
+  ],
+  "scripts": {
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
+  }
 }
