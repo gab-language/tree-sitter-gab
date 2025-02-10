@@ -4,7 +4,7 @@ const PREC_SEND = 4
 const PREC_SPECIAL_SEND = 5
 
 const op_regex = /[\+\-\*\&\|\/\!\%\=\?><~$@\^]+/
-const sym_regex = /[a-zA-Z_][a-zA-Z_\.]*[?!]?/
+const sym_regex = /[a-zA-Z_][a-zA-Z_\\]*[?!]?/
 
 module.exports = grammar({
   name: 'gab',
@@ -30,7 +30,6 @@ module.exports = grammar({
         $.tuple,
         $.binary,
         $.unary,
-        $.message,
         $.special_send,
       ),
 
@@ -81,24 +80,19 @@ module.exports = grammar({
     ),
 
     sigil: _ => token(seq(
-      '.',
-      sym_regex,
-    )),
-
-    send: _ => token(seq(
-      ':',
-      field("name", choice(
-        op_regex,
-        sym_regex,
-      )),
-    )),
-
-    message: _ => token(seq(
-      '\\',
       field("name", optional(choice(
         op_regex,
         sym_regex,
       ))),
+      ':',
+    )),
+
+    send: _ => token(seq(
+      '.',
+      field("name", choice(
+        op_regex,
+        sym_regex,
+      )),
     )),
 
     singlestring: _ => token(seq(
