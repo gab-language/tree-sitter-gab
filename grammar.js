@@ -4,7 +4,7 @@ const PREC_SEND = 4
 const PREC_SPECIAL_SEND = 5
 
 const op_regex = /[\+\-\*\&\|\/\!\%\=\?><~$@\^]+/
-const sym_regex = /[a-zA-Z_][a-zA-Z_\\]*[?!]?/
+const sym_regex = /[a-zA-Z_][a-zA-Z_\\]*/
 
 module.exports = grammar({
   name: 'gab',
