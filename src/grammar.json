@@ -298,7 +298,7 @@
                     },
                     {
                       "type": "PATTERN",
-                      "value": "[a-zA-Z_][a-zA-Z_\\\\]*"
+                      "value": "[a-zA-Z_][a-zA-Z_\\\\\\d]*"
                     }
                   ]
                 },
@@ -336,7 +336,7 @@
                 },
                 {
                   "type": "PATTERN",
-                  "value": "[a-zA-Z_][a-zA-Z_\\\\]*"
+                  "value": "[a-zA-Z_][a-zA-Z_\\\\\\d]*"
                 }
               ]
             }
@@ -424,7 +424,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "[a-zA-Z_][a-zA-Z_\\\\]*"
+        "value": "[a-zA-Z_][a-zA-Z_\\\\\\d]*"
       }
     },
     "_newline": {
