@@ -1,6 +1,6 @@
 [
   {
-    "type": "binary",
+    "type": "binary_op",
     "named": true,
     "fields": {
       "lhs": {
@@ -8,7 +8,15 @@
         "required": true,
         "types": [
           {
-            "type": "binary",
+            "type": "binary_op",
+            "named": true
+          },
+          {
+            "type": "binary_send",
+            "named": true
+          },
+          {
+            "type": "binary_special",
             "named": true
           },
           {
@@ -20,19 +28,15 @@
             "named": true
           },
           {
+            "type": "message",
+            "named": true
+          },
+          {
             "type": "number",
             "named": true
           },
           {
             "type": "record",
-            "named": true
-          },
-          {
-            "type": "sigil",
-            "named": true
-          },
-          {
-            "type": "special_send",
             "named": true
           },
           {
@@ -48,7 +52,15 @@
             "named": true
           },
           {
-            "type": "unary",
+            "type": "unary_op",
+            "named": true
+          },
+          {
+            "type": "unary_send",
+            "named": true
+          },
+          {
+            "type": "unary_special",
             "named": true
           }
         ]
@@ -60,7 +72,143 @@
           {
             "type": "operator",
             "named": true
+          }
+        ]
+      },
+      "rhs": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_op",
+            "named": true
           },
+          {
+            "type": "binary_send",
+            "named": true
+          },
+          {
+            "type": "binary_special",
+            "named": true
+          },
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "message",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "record",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unary_op",
+            "named": true
+          },
+          {
+            "type": "unary_send",
+            "named": true
+          },
+          {
+            "type": "unary_special",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "binary_send",
+    "named": true,
+    "fields": {
+      "lhs": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_op",
+            "named": true
+          },
+          {
+            "type": "binary_send",
+            "named": true
+          },
+          {
+            "type": "binary_special",
+            "named": true
+          },
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "message",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "record",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unary_op",
+            "named": true
+          },
+          {
+            "type": "unary_send",
+            "named": true
+          },
+          {
+            "type": "unary_special",
+            "named": true
+          }
+        ]
+      },
+      "message": {
+        "multiple": false,
+        "required": true,
+        "types": [
           {
             "type": "send",
             "named": true
@@ -72,7 +220,15 @@
         "required": true,
         "types": [
           {
-            "type": "binary",
+            "type": "binary_op",
+            "named": true
+          },
+          {
+            "type": "binary_send",
+            "named": true
+          },
+          {
+            "type": "binary_special",
             "named": true
           },
           {
@@ -84,19 +240,15 @@
             "named": true
           },
           {
+            "type": "message",
+            "named": true
+          },
+          {
             "type": "number",
             "named": true
           },
           {
             "type": "record",
-            "named": true
-          },
-          {
-            "type": "sigil",
-            "named": true
-          },
-          {
-            "type": "special_send",
             "named": true
           },
           {
@@ -112,7 +264,15 @@
             "named": true
           },
           {
-            "type": "unary",
+            "type": "unary_op",
+            "named": true
+          },
+          {
+            "type": "unary_send",
+            "named": true
+          },
+          {
+            "type": "unary_special",
             "named": true
           }
         ]
@@ -120,228 +280,7 @@
     }
   },
   {
-    "type": "block",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "binary",
-          "named": true
-        },
-        {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "record",
-          "named": true
-        },
-        {
-          "type": "sigil",
-          "named": true
-        },
-        {
-          "type": "special_send",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "list",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "binary",
-          "named": true
-        },
-        {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "record",
-          "named": true
-        },
-        {
-          "type": "sigil",
-          "named": true
-        },
-        {
-          "type": "special_send",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "record",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "binary",
-          "named": true
-        },
-        {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "record",
-          "named": true
-        },
-        {
-          "type": "sigil",
-          "named": true
-        },
-        {
-          "type": "special_send",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "source_file",
-    "named": true,
-    "root": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "binary",
-          "named": true
-        },
-        {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "record",
-          "named": true
-        },
-        {
-          "type": "sigil",
-          "named": true
-        },
-        {
-          "type": "special_send",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "special_send",
+    "type": "binary_special",
     "named": true,
     "fields": {
       "lhs": {
@@ -349,7 +288,15 @@
         "required": true,
         "types": [
           {
-            "type": "binary",
+            "type": "binary_op",
+            "named": true
+          },
+          {
+            "type": "binary_send",
+            "named": true
+          },
+          {
+            "type": "binary_special",
             "named": true
           },
           {
@@ -361,19 +308,15 @@
             "named": true
           },
           {
+            "type": "message",
+            "named": true
+          },
+          {
             "type": "number",
             "named": true
           },
           {
             "type": "record",
-            "named": true
-          },
-          {
-            "type": "sigil",
-            "named": true
-          },
-          {
-            "type": "special_send",
             "named": true
           },
           {
@@ -389,7 +332,15 @@
             "named": true
           },
           {
-            "type": "unary",
+            "type": "unary_op",
+            "named": true
+          },
+          {
+            "type": "unary_send",
+            "named": true
+          },
+          {
+            "type": "unary_special",
             "named": true
           }
         ]
@@ -413,7 +364,15 @@
         "required": true,
         "types": [
           {
-            "type": "binary",
+            "type": "binary_op",
+            "named": true
+          },
+          {
+            "type": "binary_send",
+            "named": true
+          },
+          {
+            "type": "binary_special",
             "named": true
           },
           {
@@ -425,19 +384,15 @@
             "named": true
           },
           {
+            "type": "message",
+            "named": true
+          },
+          {
             "type": "number",
             "named": true
           },
           {
             "type": "record",
-            "named": true
-          },
-          {
-            "type": "sigil",
-            "named": true
-          },
-          {
-            "type": "special_send",
             "named": true
           },
           {
@@ -453,11 +408,288 @@
             "named": true
           },
           {
-            "type": "unary",
+            "type": "unary_op",
+            "named": true
+          },
+          {
+            "type": "unary_send",
+            "named": true
+          },
+          {
+            "type": "unary_special",
             "named": true
           }
         ]
       }
+    }
+  },
+  {
+    "type": "block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary_op",
+          "named": true
+        },
+        {
+          "type": "binary_send",
+          "named": true
+        },
+        {
+          "type": "binary_special",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "message",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "record",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "unary_op",
+          "named": true
+        },
+        {
+          "type": "unary_send",
+          "named": true
+        },
+        {
+          "type": "unary_special",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary_op",
+          "named": true
+        },
+        {
+          "type": "binary_send",
+          "named": true
+        },
+        {
+          "type": "binary_special",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "message",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "record",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "unary_op",
+          "named": true
+        },
+        {
+          "type": "unary_send",
+          "named": true
+        },
+        {
+          "type": "unary_special",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary_op",
+          "named": true
+        },
+        {
+          "type": "binary_send",
+          "named": true
+        },
+        {
+          "type": "binary_special",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "message",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "record",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "unary_op",
+          "named": true
+        },
+        {
+          "type": "unary_send",
+          "named": true
+        },
+        {
+          "type": "unary_special",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary_op",
+          "named": true
+        },
+        {
+          "type": "binary_send",
+          "named": true
+        },
+        {
+          "type": "binary_special",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "message",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "record",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "unary_op",
+          "named": true
+        },
+        {
+          "type": "unary_send",
+          "named": true
+        },
+        {
+          "type": "unary_special",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -488,7 +720,15 @@
       "required": false,
       "types": [
         {
-          "type": "binary",
+          "type": "binary_op",
+          "named": true
+        },
+        {
+          "type": "binary_send",
+          "named": true
+        },
+        {
+          "type": "binary_special",
           "named": true
         },
         {
@@ -500,19 +740,15 @@
           "named": true
         },
         {
+          "type": "message",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
         {
           "type": "record",
-          "named": true
-        },
-        {
-          "type": "sigil",
-          "named": true
-        },
-        {
-          "type": "special_send",
           "named": true
         },
         {
@@ -528,14 +764,22 @@
           "named": true
         },
         {
-          "type": "unary",
+          "type": "unary_op",
+          "named": true
+        },
+        {
+          "type": "unary_send",
+          "named": true
+        },
+        {
+          "type": "unary_special",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "unary",
+    "type": "unary_op",
     "named": true,
     "fields": {
       "lhs": {
@@ -543,7 +787,15 @@
         "required": true,
         "types": [
           {
-            "type": "binary",
+            "type": "binary_op",
+            "named": true
+          },
+          {
+            "type": "binary_send",
+            "named": true
+          },
+          {
+            "type": "binary_special",
             "named": true
           },
           {
@@ -555,19 +807,15 @@
             "named": true
           },
           {
+            "type": "message",
+            "named": true
+          },
+          {
             "type": "number",
             "named": true
           },
           {
             "type": "record",
-            "named": true
-          },
-          {
-            "type": "sigil",
-            "named": true
-          },
-          {
-            "type": "special_send",
             "named": true
           },
           {
@@ -583,7 +831,15 @@
             "named": true
           },
           {
-            "type": "unary",
+            "type": "unary_op",
+            "named": true
+          },
+          {
+            "type": "unary_send",
+            "named": true
+          },
+          {
+            "type": "unary_special",
             "named": true
           }
         ]
@@ -595,10 +851,166 @@
           {
             "type": "operator",
             "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "unary_send",
+    "named": true,
+    "fields": {
+      "lhs": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_op",
+            "named": true
           },
+          {
+            "type": "binary_send",
+            "named": true
+          },
+          {
+            "type": "binary_special",
+            "named": true
+          },
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "message",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "record",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unary_op",
+            "named": true
+          },
+          {
+            "type": "unary_send",
+            "named": true
+          },
+          {
+            "type": "unary_special",
+            "named": true
+          }
+        ]
+      },
+      "message": {
+        "multiple": false,
+        "required": true,
+        "types": [
           {
             "type": "send",
             "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "unary_special",
+    "named": true,
+    "fields": {
+      "lhs": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_op",
+            "named": true
+          },
+          {
+            "type": "binary_send",
+            "named": true
+          },
+          {
+            "type": "binary_special",
+            "named": true
+          },
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "message",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "record",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unary_op",
+            "named": true
+          },
+          {
+            "type": "unary_send",
+            "named": true
+          },
+          {
+            "type": "unary_special",
+            "named": true
+          }
+        ]
+      },
+      "message": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "=",
+            "named": false
+          },
+          {
+            "type": "=>",
+            "named": false
           }
         ]
       }
@@ -646,6 +1058,10 @@
     "named": false
   },
   {
+    "type": "message",
+    "named": true
+  },
+  {
     "type": "number",
     "named": true
   },
@@ -655,10 +1071,6 @@
   },
   {
     "type": "send",
-    "named": true
-  },
-  {
-    "type": "sigil",
     "named": true
   },
   {

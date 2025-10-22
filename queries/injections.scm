@@ -1,4 +1,4 @@
-((binary
+((binary_send
   lhs: (string [
     (doublestring)
     (singlestring)
@@ -7,7 +7,7 @@
   (#set! injection.combined)
   (#offset! @injection.content 0 1 0 -1))
 
-((unary
+((unary_send
   lhs: (string [
     (doublestring)
     (singlestring)

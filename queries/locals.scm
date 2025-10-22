@@ -2,7 +2,7 @@
   (block)
 ] @scope
 
-(special_send
+(binary_special
   lhs: (symbol) @definition.parameter
   (#set! "definition.var.scope" "parent"))
 

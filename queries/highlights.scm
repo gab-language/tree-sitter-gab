@@ -7,7 +7,7 @@
 
 (symbol) @variable
 
-(sigil) @function
+(message) @function
 
 (operator) @operator
 (send) @operator

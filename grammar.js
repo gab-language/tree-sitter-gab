@@ -1,7 +1,6 @@
-const PREC_UNARY = 2
-const PREC_BINARY = 3
-const PREC_SEND = 4
-const PREC_SPECIAL_SEND = 5
+const PREC_OPERATOR = 2
+const PREC_SEND = 3
+const PREC_SPECIAL_SEND = 4
 
 const op_regex = /[\+\-\*\&\|\/\!\%\=\?><~$@\^]+/
 const sym_regex = /[a-zA-Z_][a-zA-Z_\\\d]*/
@@ -9,18 +8,20 @@ const sym_regex = /[a-zA-Z_][a-zA-Z_\\\d]*/
 module.exports = grammar({
   name: 'gab',
 
-  word: $ => $.symbol,
-
-  extras: $ => [$.comment, /\s/, $._newline],
+  // PSA:
+  // DO NOT EVER TRY TO REFACTOR THIS GRAMMER TO PARSE NEWLINES.
+  // JUST LEAVE THEM AS EXTRAS.
+  extras: $ => [$.comment, $._newline, /\s/],
 
   rules: {
-    source_file: $ => repeat($._expression),
-
-    body: $ => seq(repeat1($._expression)),
+    source_file: $ =>
+      repeat(seq(
+        $._expression,
+       )),
 
     _expression: $ =>
-      choice(
-        $.sigil,
+      (choice(
+        $.message,
         $.record,
         $.list,
         $.block,
@@ -28,26 +29,45 @@ module.exports = grammar({
         $.number,
         $.string,
         $.tuple,
-        $.binary,
-        $.unary,
-        $.special_send,
-      ),
+        $.binary_send,
+        $.unary_send,
+        $.binary_op,
+        $.unary_op,
+        $.binary_special,
+        $.unary_special,
+      )),
 
-    unary: $ => prec(PREC_UNARY, seq(
+    binary_send: $ => prec.right(PREC_SEND, seq(
       field('lhs', $._expression),
-      field('message', choice($.send, $.operator)),
+      field('message', $.send),
+      field('rhs', ($._expression)),
     )),
 
-    binary: $ => prec.left(PREC_BINARY, seq(
+    unary_send: $ => prec.right(PREC_SEND, seq(
       field('lhs', $._expression),
-      field('message', choice($.send, $.operator)),
-      field('rhs', $._expression),
+      field('message', $.send),
     )),
 
-    special_send: $ => prec.left(PREC_SPECIAL_SEND, seq(
+    binary_op: $ => prec.right(PREC_OPERATOR, seq(
+      field('lhs', $._expression),
+      field('message', $.operator),
+      field('rhs', ($._expression)),
+    )),
+
+    unary_op: $ => prec.right(PREC_OPERATOR, seq(
+      field('lhs', $._expression),
+      field('message', $.operator),
+    )),
+
+    binary_special: $ => prec.right(PREC_SPECIAL_SEND, seq(
       field('lhs', $._expression),
       field('message', choice('=>', '=')),
-      field('rhs', $._expression),
+      field('rhs', ($._expression)),
+    )),
+
+    unary_special: $ => prec.right(PREC_SPECIAL_SEND, seq(
+      field('lhs', $._expression),
+      field('message', choice('=>', '=')),
     )),
 
     record: $ => seq(
@@ -63,23 +83,29 @@ module.exports = grammar({
 
     tuple: $ => seq(
       '(',
-      repeat($._expression),
+      repeat(seq(
+        $._expression,
+      )),
       ')',
     ),
 
     list: $ => seq(
       '[',
-      repeat($._expression),
+      repeat(seq(
+        $._expression,
+      )),
       ']',
     ),
 
     block: $ => seq(
       'do',
-      repeat($._expression),
+      repeat(seq(
+        $._expression,
+       )),
       'end',
     ),
 
-    sigil: _ => token(seq(
+    message: _ => token(seq(
       field("name", optional(choice(
         op_regex,
         sym_regex,
@@ -119,6 +145,7 @@ module.exports = grammar({
     symbol: _ => token(sym_regex),
 
     _newline: _ => token(/[\n;,]/),
+    _newlines: $ => repeat1($._newline),
 
     number: _ => token(/\d+(\.\d)?/),
   }
