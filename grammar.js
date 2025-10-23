@@ -1,6 +1,6 @@
-const PREC_OPERATOR = 2
+const PREC_OPERATOR = 4
 const PREC_SEND = 3
-const PREC_SPECIAL_SEND = 4
+const PREC_SPECIAL_SEND = 2
 
 const op_regex = /[\+\-\*\&\|\/\!\%\=\?><~$@\^]+/
 const sym_regex = /[a-zA-Z_][a-zA-Z_\\\d]*/
@@ -29,45 +29,27 @@ module.exports = grammar({
         $.number,
         $.string,
         $.tuple,
-        $.binary_send,
-        $.unary_send,
-        $.binary_op,
-        $.unary_op,
-        $.binary_special,
-        $.unary_special,
+        $.send,
+        $.op,
+        $.special,
       )),
 
-    binary_send: $ => prec.right(PREC_SEND, seq(
+    send: $ => prec.right(PREC_SEND, seq(
       field('lhs', $._expression),
-      field('message', $.send),
-      field('rhs', ($._expression)),
+      field('message', $.send_infix),
+      field('rhs', optional($._expression)),
     )),
 
-    unary_send: $ => prec.right(PREC_SEND, seq(
+    op: $ => prec.right(PREC_OPERATOR, seq(
       field('lhs', $._expression),
-      field('message', $.send),
+      field('message', $.op_infix),
+      field('rhs', optional($._expression)),
     )),
 
-    binary_op: $ => prec.right(PREC_OPERATOR, seq(
-      field('lhs', $._expression),
-      field('message', $.operator),
-      field('rhs', ($._expression)),
-    )),
-
-    unary_op: $ => prec.right(PREC_OPERATOR, seq(
-      field('lhs', $._expression),
-      field('message', $.operator),
-    )),
-
-    binary_special: $ => prec.right(PREC_SPECIAL_SEND, seq(
+    special: $ => prec.right(PREC_SPECIAL_SEND, seq(
       field('lhs', $._expression),
       field('message', choice('=>', '=')),
-      field('rhs', ($._expression)),
-    )),
-
-    unary_special: $ => prec.right(PREC_SPECIAL_SEND, seq(
-      field('lhs', $._expression),
-      field('message', choice('=>', '=')),
+      field('rhs', optional($._expression)),
     )),
 
     record: $ => seq(
@@ -113,12 +95,12 @@ module.exports = grammar({
       ':',
     )),
 
-    send: _ => token(seq(
+    send_infix: _ => token(seq(
       '.',
-      field("name", choice(
+      field("name", optional(choice(
         op_regex,
         sym_regex,
-      )),
+      ))),
     )),
 
     singlestring: _ => token(seq(
@@ -140,7 +122,7 @@ module.exports = grammar({
 
     comment: _ => token(seq('#', /.*/)),
 
-    operator: _ => token(op_regex),
+    op_infix: _ => token(op_regex),
 
     symbol: _ => token(sym_regex),
 

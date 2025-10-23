@@ -2,8 +2,8 @@
   (block)
 ] @scope
 
-(binary_special
-  lhs: (symbol) @definition.parameter
+(special
+  lhs: (symbol) @definition.var
   (#set! "definition.var.scope" "parent"))
 
 (symbol) @reference

@@ -1,4 +1,1 @@
-(a, b)
-  => do
-    a + b
-  end
+(a b c d) => self.(a b c d)
