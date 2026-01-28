@@ -129,6 +129,6 @@ module.exports = grammar({
     _newline: _ => token(/[\n;,]/),
     _newlines: $ => repeat1($._newline),
 
-    number: _ => token(/\d+(\.\d)?/),
+    number: _ => token(/\d+(\.\d)?(e\d+)?|0x\d+(p\d+)?/),
   }
 })

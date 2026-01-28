@@ -474,7 +474,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "\\d+(\\.\\d)?"
+        "value": "\\d+(\\.\\d)?(e\\d+)?|0x\\d+(p\\d+)?"
       }
     }
   },
