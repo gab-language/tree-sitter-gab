@@ -1,1 +1,1 @@
-(a b c d) => self.(a b c d)
+(a b c d) :lambda self.(a b c d)

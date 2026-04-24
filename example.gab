@@ -1,19 +1,19 @@
-module = td:
+module := td:
 
 td\apply: .defcase {
-  none: x => x
-  nil:  x => x
+  none: x :lambda x
+  nil:  x :lambda x
 }
 
 transduce\step:.def(
   Messages.t, Blocks.t
-  (a b c d) => self.(a b c d)
+  (a b c d) :lambda self.(a b c d)
 )
 
 deftransducer: .def (
   Messages.t
-  (cx, init) => do
-    mod\t = {
+  (cx, init) :lambda do
+    mod\t := {
       module nil:
       self nil:
       state: init
@@ -23,20 +23,20 @@ deftransducer: .def (
 
     self.def(
       module
-      (xs*) => mod\t.put(reducer: cx.(xs*)))
+      (xs*) :lambda mod\t.put(reducer: cx.(xs*)))
 
     [mod\t ?] .defmodule {
 
-      |>: o => self.td\apply o
+      |>: o :lambda self.td\apply o
 
-      td\apply: c => self.put(continuation: self.continuation.td\apply c)
+      td\apply: c :lambda self.put(continuation: self.continuation.td\apply c)
 
-      transduce\step: (a b c d) => do
+      transduce\step: (a b c d) :lambda do
         self.reducer.transduce\step(a b c d)
       end
 
-      reduce\step: (acc, xs*) => do
-        (s, cmd, c, acc) = self.transduce\step(self.continuation, acc, xs, self.state)
+      reduce\step: (acc, xs*) :lambda do
+        (s, cmd, c, acc) := self.transduce\step(self.continuation, acc, xs, self.state)
 
         (
           cmd,
@@ -47,47 +47,47 @@ deftransducer: .def (
         )
      end
 
-      reduce\done: (acc) => self.continuation.reduce\done acc
+      reduce\done: (acc) :lambda self.continuation.reduce\done acc
     }
   end)
 
 td\conditionally: .defcase {
-  true: (r, acc, xs, s) => (s, r.reduce\step(acc, xs*))
-  next: (r, acc, xs, s) => (s, r.reduce\step(acc, xs*))
+  true: (r, acc, xs, s) :lambda (s, r.reduce\step(acc, xs*))
+  next: (r, acc, xs, s) :lambda (s, r.reduce\step(acc, xs*))
 
-  false: (r, acc, xs, s) => (s, next:, r, acc)
-  stop: (r, acc, xs, s) => (s, next:, r, acc)
+  false: (r, acc, xs, s) :lambda (s, next:, r, acc)
+  stop: (r, acc, xs, s) :lambda (s, next:, r, acc)
 }
 
 td\stop_conditionally_inclusive: .defcase {
-  true: (r, acc, xs, s) => (s, r.reduce\step(acc, xs*))
-  false: (r, acc, xs, s) => do
-    (cmd, r, acc) = r.reduce\step(acc, xs*)
+  true: (r, acc, xs, s) :lambda (s, r.reduce\step(acc, xs*))
+  false: (r, acc, xs, s) :lambda do
+    (cmd, r, acc) := r.reduce\step(acc, xs*)
     (s, stop:, r, acc)
   end
 }
 
 td\stop_conditionally: .defcase {
-  true: (r, acc, xs, s) => (s, r.reduce\step(acc, xs*))
-  false: (r, acc, xs, s) => (s, stop:, r, acc)
+  true: (r, acc, xs, s) :lambda (s, r.reduce\step(acc, xs*))
+  false: (r, acc, xs, s) :lambda (s, stop:, r, acc)
 }
 
 map:.deftransducer(
-  f => (r, acc, xs) => (nil:, r.reduce\step(acc, f.(xs*))))
+  f :lambda (r, acc, xs) :lambda (nil:, r.reduce\step(acc, f.(xs*))))
 
 filter:.deftransducer(
-  f => (r, acc, xs) => f.(xs*).td\conditionally(r, acc, xs))
+  f :lambda (r, acc, xs) :lambda f.(xs*).td\conditionally(r, acc, xs))
 
 reduce:.deftransducer(
   (inner_acc inner_r)
-    => (outer_r, outer_acc, xs, state)
-      => do
+    :lambda (outer_r, outer_acc, xs, state)
+      :lambda do
         # Get the recent reduce and accumulator out of the state
-        r = state.r.or inner_r
-        acc = state.acc.or inner_acc
+        r := state.r.or inner_r
+        acc := state.acc.or inner_acc
 
         # Step these by the xs
-        (cmd, r, acc) = r.reduce\step(acc, xs*)
+        (cmd, r, acc) := r.reduce\step(acc, xs*)
 
         # Apply the new inner accumulator to our outer reducer
         # If our command tells us to
@@ -96,86 +96,86 @@ reduce:.deftransducer(
   { r: nil: acc: nil: })
 
 transduce:.deftransducer(
-  (inner_acc inner_r td) => td:.reduce(inner_acc, td.td\apply inner_r)
+  (inner_acc inner_r td) :lambda td:.reduce(inner_acc, td.td\apply inner_r)
   { r: nil: acc: nil: })
 
 tap:.deftransducer(
   f
-    => (r, acc, xs)
-        => do
+    :lambda (r, acc, xs)
+        :lambda do
           f.(xs*)
           (nil:, r.reduce\step(acc, xs*))
         end)
 
 skip:.deftransducer(
-  f => (r, acc, xs) => f.(xs*).!.td\conditionally(r, acc, xs))
+  f :lambda (r, acc, xs) :lambda f.(xs*).!.td\conditionally(r, acc, xs))
 
 take:.deftransducer(
   n
-    => (r, acc, xs, nth)
-      => do
-        nxth = nth + 1
+    :lambda (r, acc, xs, nth)
+      :lambda do
+        nxth := nth + 1
         (nxth < n).td\stop_conditionally_inclusive(r, acc, xs, nxth)
       end
   0)
 
 take_while:.deftransducer(
-  f => (r, acc, xs) => f.(xs*).td\stop_conditionally(r, acc, xs))
+  f :lambda (r, acc, xs) :lambda f.(xs*).td\stop_conditionally(r, acc, xs))
 
 take_until:.deftransducer(
-  f => (r, acc, xs) => f.(xs*).!.td\stop_conditionally(r, acc, xs))
+  f :lambda (r, acc, xs) :lambda f.(xs*).!.td\stop_conditionally(r, acc, xs))
 
 drop:.deftransducer(
   n
-    => (r, acc, xs, nth)
-      => do
+    :lambda (r, acc, xs, nth)
+      :lambda do
         (nth >= n).td\conditionally(r, acc, xs, nth + 1)
       end
   0)
 
 td\do_dropwhile: .defcase {
-  true: (r, acc, xs, b, f) => (true:, r.reduce\step(acc, xs*))
-  false: (r, acc, xs, b, f) => do
-    new_b = b | f.(xs*) !
+  true: (r, acc, xs, b, f) :lambda (true:, r.reduce\step(acc, xs*))
+  false: (r, acc, xs, b, f) :lambda do
+    new_b := b | f.(xs*) !
     new_b.td\conditionally(r, acc, xs, new_b)
   end
 }
 
 drop_while:.deftransducer(
-  f => (r, acc, xs, b) => b.td\do_dropwhile(r, acc, xs, b, f)
+  f :lambda (r, acc, xs, b) :lambda b.td\do_dropwhile(r, acc, xs, b, f)
   false:)
 
 td\do_interpose:.defcase {
-  next: (r, acc, xs) => (true:, r.reduce\step(acc, xs*))
-  stop: (r, acc, xs) => (true:, stop:, r, acc)
-  true: (r, acc, xs, sep) => do
-    (cmd, r, acc) = r.reduce\step(acc, sep)
+  next: (r, acc, xs) :lambda (true:, r.reduce\step(acc, xs*))
+  stop: (r, acc, xs) :lambda (true:, stop:, r, acc)
+  true: (r, acc, xs, sep) :lambda do
+    (cmd, r, acc) := r.reduce\step(acc, sep)
     cmd.td\do_interpose(r, acc, xs)
   end
-  false: (r acc xs) => (true: r.reduce\step(acc, xs*))
+  false: (r acc xs) :lambda (true: r.reduce\step(acc, xs*))
 }
 
 interpose:.deftransducer(
   sep
-    => (r, acc, xs, started)
-      => started.td\do_interpose(r, acc, xs, sep)
+    :lambda (r, acc, xs, started)
+      :lambda started.td\do_interpose(r, acc, xs, sep)
   false:)
 
 td\do_split:.defcase {
-  true: (r acc xs split) => do
+  true: (r acc xs split) :lambda do
     ([] r.reduce\step(acc split))
   end
-  false: (r acc xs split) => do
+  false: (r acc xs split) :lambda do
     (split.push(xs*) next: r acc)
   end
 }
 
 split:.deftransducer(
   sep
-    => (r acc xs split)
-      => do
-        x = xs.at 0 .unwrap
-        (sep == x).td\do_split(r acc xs split)
+    :lambda (r acc xs split)
+      :lambda do
+        x := xs.at 0 .unwrap
+        (sep :== x).td\do_split(r acc xs split)
       end
   [])
 
@@ -185,5 +185,7 @@ split:.deftransducer(
 0x223
 
 0x3p4
+
+0xff
 
 module

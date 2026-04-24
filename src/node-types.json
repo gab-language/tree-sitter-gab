@@ -16,6 +16,10 @@
           "named": true
         },
         {
+          "type": "macro",
+          "named": true
+        },
+        {
           "type": "message",
           "named": true
         },
@@ -33,10 +37,6 @@
         },
         {
           "type": "send",
-          "named": true
-        },
-        {
-          "type": "special",
           "named": true
         },
         {
@@ -71,6 +71,10 @@
           "named": true
         },
         {
+          "type": "macro",
+          "named": true
+        },
+        {
           "type": "message",
           "named": true
         },
@@ -91,10 +95,6 @@
           "named": true
         },
         {
-          "type": "special",
-          "named": true
-        },
-        {
           "type": "string",
           "named": true
         },
@@ -110,7 +110,7 @@
     }
   },
   {
-    "type": "op",
+    "type": "macro",
     "named": true,
     "fields": {
       "lhs": {
@@ -123,6 +123,10 @@
           },
           {
             "type": "list",
+            "named": true
+          },
+          {
+            "type": "macro",
             "named": true
           },
           {
@@ -146,7 +150,119 @@
             "named": true
           },
           {
-            "type": "special",
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          }
+        ]
+      },
+      "message": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "macro_infix",
+            "named": true
+          }
+        ]
+      },
+      "rhs": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "macro",
+            "named": true
+          },
+          {
+            "type": "message",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "op",
+            "named": true
+          },
+          {
+            "type": "record",
+            "named": true
+          },
+          {
+            "type": "send",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "op",
+    "named": true,
+    "fields": {
+      "lhs": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "macro",
+            "named": true
+          },
+          {
+            "type": "message",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "op",
+            "named": true
+          },
+          {
+            "type": "record",
+            "named": true
+          },
+          {
+            "type": "send",
             "named": true
           },
           {
@@ -186,6 +302,10 @@
             "named": true
           },
           {
+            "type": "macro",
+            "named": true
+          },
+          {
             "type": "message",
             "named": true
           },
@@ -203,10 +323,6 @@
           },
           {
             "type": "send",
-            "named": true
-          },
-          {
-            "type": "special",
             "named": true
           },
           {
@@ -242,6 +358,10 @@
           "named": true
         },
         {
+          "type": "macro",
+          "named": true
+        },
+        {
           "type": "message",
           "named": true
         },
@@ -259,10 +379,6 @@
         },
         {
           "type": "send",
-          "named": true
-        },
-        {
-          "type": "special",
           "named": true
         },
         {
@@ -297,6 +413,10 @@
             "named": true
           },
           {
+            "type": "macro",
+            "named": true
+          },
+          {
             "type": "message",
             "named": true
           },
@@ -314,10 +434,6 @@
           },
           {
             "type": "send",
-            "named": true
-          },
-          {
-            "type": "special",
             "named": true
           },
           {
@@ -357,6 +473,10 @@
             "named": true
           },
           {
+            "type": "macro",
+            "named": true
+          },
+          {
             "type": "message",
             "named": true
           },
@@ -374,10 +494,6 @@
           },
           {
             "type": "send",
-            "named": true
-          },
-          {
-            "type": "special",
             "named": true
           },
           {
@@ -414,6 +530,10 @@
           "named": true
         },
         {
+          "type": "macro",
+          "named": true
+        },
+        {
           "type": "message",
           "named": true
         },
@@ -434,10 +554,6 @@
           "named": true
         },
         {
-          "type": "special",
-          "named": true
-        },
-        {
           "type": "string",
           "named": true
         },
@@ -450,126 +566,6 @@
           "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "special",
-    "named": true,
-    "fields": {
-      "lhs": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "block",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "message",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "op",
-            "named": true
-          },
-          {
-            "type": "record",
-            "named": true
-          },
-          {
-            "type": "send",
-            "named": true
-          },
-          {
-            "type": "special",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          }
-        ]
-      },
-      "message": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "=",
-            "named": false
-          },
-          {
-            "type": "=>",
-            "named": false
-          }
-        ]
-      },
-      "rhs": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "block",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "message",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "op",
-            "named": true
-          },
-          {
-            "type": "record",
-            "named": true
-          },
-          {
-            "type": "send",
-            "named": true
-          },
-          {
-            "type": "special",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {
@@ -608,6 +604,10 @@
           "named": true
         },
         {
+          "type": "macro",
+          "named": true
+        },
+        {
           "type": "message",
           "named": true
         },
@@ -625,10 +625,6 @@
         },
         {
           "type": "send",
-          "named": true
-        },
-        {
-          "type": "special",
           "named": true
         },
         {
@@ -655,14 +651,6 @@
     "named": false
   },
   {
-    "type": "=",
-    "named": false
-  },
-  {
-    "type": "=>",
-    "named": false
-  },
-  {
     "type": "[",
     "named": false
   },
@@ -686,6 +674,10 @@
   {
     "type": "end",
     "named": false
+  },
+  {
+    "type": "macro_infix",
+    "named": true
   },
   {
     "type": "message",

@@ -7,10 +7,11 @@
 
 (symbol) @variable
 
-(message) @function
+(message) @type
 
 (op_infix) @operator
 (send_infix) @operator
+(macro_infix) @function.macro
 
 [
   (string)
@@ -41,5 +42,5 @@
 ((symbol) @module.builtin (#eq? @module.builtin "Fibers"))
 ((symbol) @module.builtin (#eq? @module.builtin "Channels"))
 ((symbol) @module.builtin (#eq? @module.builtin "Ranges"))
-((symbol) @module.builtin (#eq? @module.builtin "IO"))
+((symbol) @module.builtin (#eq? @module.builtin "Io"))
 ((symbol) @module.builtin (#eq? @module.builtin "Streams"))
