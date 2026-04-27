@@ -11,7 +11,6 @@
 
 (op_infix) @operator
 (send_infix) @operator
-(macro_infix) @function.macro
 
 [
   (string)
@@ -20,6 +19,8 @@
 [
   "do"
   "end"
+  ":="
+  "lambda"
 ] @keyword
 
 [

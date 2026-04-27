@@ -2,7 +2,7 @@
   (block)
 ] @scope
 
-(macro
+(builtin
   lhs: (symbol) @definition.var
   (#set! "definition.var.scope" "parent"))
 

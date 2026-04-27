@@ -1,6 +1,6 @@
 const PREC_OPERATOR = 4
 const PREC_SEND = 3
-const PREC_MACRO = 2
+const PREC_BUILTIN = 2
 
 const op_regex = /[\+\-\*\&\|\/\!\%\=\?><~$@\^]+/
 const sym_regex = /[a-zA-Z_][a-zA-Z_\\\d]*/
@@ -31,7 +31,7 @@ module.exports = grammar({
         $.tuple,
         $.send,
         $.op,
-        $.macro,
+        $.builtin,
       )),
 
     send: $ => prec.right(PREC_SEND, seq(
@@ -46,9 +46,9 @@ module.exports = grammar({
       field('rhs', optional($._expression)),
     )),
 
-    macro: $ => prec.right(PREC_MACRO, seq(
+    builtin: $ => prec.right(PREC_BUILTIN, seq(
       field('lhs', $._expression),
-      field('message', $.macro_infix),
+      field('message', choice(':=', 'lambda')),
       field('rhs', optional($._expression)),
     )),
 
@@ -102,15 +102,6 @@ module.exports = grammar({
         sym_regex,
       ))),
     )),
-
-    macro_infix: _ => token(seq(
-      ':',
-      field("name", optional(choice(
-        op_regex,
-        sym_regex,
-      ))),
-    )),
-
 
     singlestring: _ => token(seq(
       '\'',
