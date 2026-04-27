@@ -48,7 +48,7 @@ module.exports = grammar({
 
     builtin: $ => prec.right(PREC_BUILTIN, seq(
       field('lhs', $._expression),
-      field('message', choice(':=', 'lambda')),
+      field('message', choice(':=', '::')),
       field('rhs', optional($._expression)),
     )),
 

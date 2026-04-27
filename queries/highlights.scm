@@ -20,7 +20,7 @@
   "do"
   "end"
   ":="
-  "lambda"
+  "::"
 ] @keyword
 
 [
