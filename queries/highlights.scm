@@ -32,16 +32,5 @@
   ")"
 ] @punctuation.bracket
 
+; self variable
 ((symbol) @variable.builtin (#eq? @variable.builtin "self"))
-((symbol) @module.builtin (#eq? @module.builtin "Strings"))
-((symbol) @module.builtin (#eq? @module.builtin "Binaries"))
-((symbol) @module.builtin (#eq? @module.builtin "Shapes"))
-((symbol) @module.builtin (#eq? @module.builtin "Messages"))
-((symbol) @module.builtin (#eq? @module.builtin "Numbers"))
-((symbol) @module.builtin (#eq? @module.builtin "Blocks"))
-((symbol) @module.builtin (#eq? @module.builtin "Records"))
-((symbol) @module.builtin (#eq? @module.builtin "Fibers"))
-((symbol) @module.builtin (#eq? @module.builtin "Channels"))
-((symbol) @module.builtin (#eq? @module.builtin "Ranges"))
-((symbol) @module.builtin (#eq? @module.builtin "Io"))
-((symbol) @module.builtin (#eq? @module.builtin "Streams"))
