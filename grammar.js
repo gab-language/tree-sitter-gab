@@ -32,6 +32,7 @@ module.exports = grammar({
         $.tuple,
         $.send,
         $.op,
+        $.macro,
         $.quasiquote,
         $.unquote,
       )),
@@ -46,6 +47,12 @@ module.exports = grammar({
       field('lhs', $._expression),
       field('message', $.op_infix),
       field('rhs', optional($._expression)),
+    )),
+
+    macro: $ => prec.right(PREC_MACRO, seq(
+      field('lhs', $._expression),
+      field('msg', $.macro_infix),
+      field('rhs', $._expression),
     )),
 
     quasiquote: $ => seq(

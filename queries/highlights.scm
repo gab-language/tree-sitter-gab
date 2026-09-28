@@ -11,6 +11,7 @@
 
 (op_infix) @operator
 (send_infix) @operator
+(macro_infix) @keyword
 
 [
   (string)

@@ -59,6 +59,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "macro"
+        },
+        {
+          "type": "SYMBOL",
           "name": "quasiquote"
         },
         {
@@ -144,6 +148,39 @@
                   "type": "BLANK"
                 }
               ]
+            }
+          }
+        ]
+      }
+    },
+    "macro": {
+      "type": "PREC_RIGHT",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "lhs",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expression"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "msg",
+            "content": {
+              "type": "SYMBOL",
+              "name": "macro_infix"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "rhs",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expression"
             }
           }
         ]
