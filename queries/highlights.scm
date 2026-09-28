@@ -19,8 +19,6 @@
 [
   "do"
   "end"
-  ":="
-  "::"
 ] @keyword
 
 [
@@ -30,6 +28,8 @@
   "]"
   "("
   ")"
+  "\\["
+  "\\("
 ] @punctuation.bracket
 
 ; self variable

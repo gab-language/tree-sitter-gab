@@ -12,10 +12,6 @@
           "named": true
         },
         {
-          "type": "builtin",
-          "named": true
-        },
-        {
           "type": "list",
           "named": true
         },
@@ -29,6 +25,10 @@
         },
         {
           "type": "op",
+          "named": true
+        },
+        {
+          "type": "quasiquote",
           "named": true
         },
         {
@@ -50,128 +50,12 @@
         {
           "type": "tuple",
           "named": true
+        },
+        {
+          "type": "unquote",
+          "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "builtin",
-    "named": true,
-    "fields": {
-      "lhs": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "block",
-            "named": true
-          },
-          {
-            "type": "builtin",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "message",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "op",
-            "named": true
-          },
-          {
-            "type": "record",
-            "named": true
-          },
-          {
-            "type": "send",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          }
-        ]
-      },
-      "message": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "::",
-            "named": false
-          },
-          {
-            "type": ":=",
-            "named": false
-          }
-        ]
-      },
-      "rhs": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "block",
-            "named": true
-          },
-          {
-            "type": "builtin",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "message",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "op",
-            "named": true
-          },
-          {
-            "type": "record",
-            "named": true
-          },
-          {
-            "type": "send",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {
@@ -187,10 +71,6 @@
           "named": true
         },
         {
-          "type": "builtin",
-          "named": true
-        },
-        {
           "type": "list",
           "named": true
         },
@@ -204,6 +84,10 @@
         },
         {
           "type": "op",
+          "named": true
+        },
+        {
+          "type": "quasiquote",
           "named": true
         },
         {
@@ -224,6 +108,10 @@
         },
         {
           "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "unquote",
           "named": true
         }
       ]
@@ -242,10 +130,6 @@
             "named": true
           },
           {
-            "type": "builtin",
-            "named": true
-          },
-          {
             "type": "list",
             "named": true
           },
@@ -259,6 +143,10 @@
           },
           {
             "type": "op",
+            "named": true
+          },
+          {
+            "type": "quasiquote",
             "named": true
           },
           {
@@ -279,6 +167,10 @@
           },
           {
             "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unquote",
             "named": true
           }
         ]
@@ -302,10 +194,6 @@
             "named": true
           },
           {
-            "type": "builtin",
-            "named": true
-          },
-          {
             "type": "list",
             "named": true
           },
@@ -319,6 +207,10 @@
           },
           {
             "type": "op",
+            "named": true
+          },
+          {
+            "type": "quasiquote",
             "named": true
           },
           {
@@ -340,6 +232,70 @@
           {
             "type": "tuple",
             "named": true
+          },
+          {
+            "type": "unquote",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "quasiquote",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "message",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "op",
+            "named": true
+          },
+          {
+            "type": "quasiquote",
+            "named": true
+          },
+          {
+            "type": "record",
+            "named": true
+          },
+          {
+            "type": "send",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unquote",
+            "named": true
           }
         ]
       }
@@ -358,10 +314,6 @@
           "named": true
         },
         {
-          "type": "builtin",
-          "named": true
-        },
-        {
           "type": "list",
           "named": true
         },
@@ -375,6 +327,10 @@
         },
         {
           "type": "op",
+          "named": true
+        },
+        {
+          "type": "quasiquote",
           "named": true
         },
         {
@@ -396,6 +352,10 @@
         {
           "type": "tuple",
           "named": true
+        },
+        {
+          "type": "unquote",
+          "named": true
         }
       ]
     }
@@ -413,10 +373,6 @@
             "named": true
           },
           {
-            "type": "builtin",
-            "named": true
-          },
-          {
             "type": "list",
             "named": true
           },
@@ -430,6 +386,10 @@
           },
           {
             "type": "op",
+            "named": true
+          },
+          {
+            "type": "quasiquote",
             "named": true
           },
           {
@@ -450,6 +410,10 @@
           },
           {
             "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unquote",
             "named": true
           }
         ]
@@ -473,10 +437,6 @@
             "named": true
           },
           {
-            "type": "builtin",
-            "named": true
-          },
-          {
             "type": "list",
             "named": true
           },
@@ -490,6 +450,10 @@
           },
           {
             "type": "op",
+            "named": true
+          },
+          {
+            "type": "quasiquote",
             "named": true
           },
           {
@@ -511,6 +475,10 @@
           {
             "type": "tuple",
             "named": true
+          },
+          {
+            "type": "unquote",
+            "named": true
           }
         ]
       }
@@ -530,10 +498,6 @@
           "named": true
         },
         {
-          "type": "builtin",
-          "named": true
-        },
-        {
           "type": "list",
           "named": true
         },
@@ -547,6 +511,10 @@
         },
         {
           "type": "op",
+          "named": true
+        },
+        {
+          "type": "quasiquote",
           "named": true
         },
         {
@@ -567,6 +535,10 @@
         },
         {
           "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "unquote",
           "named": true
         }
       ]
@@ -604,10 +576,6 @@
           "named": true
         },
         {
-          "type": "builtin",
-          "named": true
-        },
-        {
           "type": "list",
           "named": true
         },
@@ -621,6 +589,10 @@
         },
         {
           "type": "op",
+          "named": true
+        },
+        {
+          "type": "quasiquote",
           "named": true
         },
         {
@@ -642,8 +614,72 @@
         {
           "type": "tuple",
           "named": true
+        },
+        {
+          "type": "unquote",
+          "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "unquote",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "message",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "op",
+            "named": true
+          },
+          {
+            "type": "quasiquote",
+            "named": true
+          },
+          {
+            "type": "record",
+            "named": true
+          },
+          {
+            "type": "send",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unquote",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -655,15 +691,15 @@
     "named": false
   },
   {
-    "type": "::",
-    "named": false
-  },
-  {
-    "type": ":=",
-    "named": false
-  },
-  {
     "type": "[",
+    "named": false
+  },
+  {
+    "type": "\\(",
+    "named": false
+  },
+  {
+    "type": "\\[",
     "named": false
   },
   {
